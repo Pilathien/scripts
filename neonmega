@@ -7,8 +7,6 @@ repeat task.wait() until
 
 task.spawn(function()
     task.wait(30)
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/ReQiuYTPL/hub/main/ReQiuYTPLHub.lua', true))()
-
     -- Script key and config
     script_key="AopxeFqgPLGHwDeKkeqmCNRfjIxAWcXB";
     getgenv().Config = {
@@ -22,7 +20,11 @@ task.spawn(function()
     }
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/66567bfd337b57eb059b58dbe1badb89.lua"))()
 
-    task.wait(20)
+    task.wait(30)
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ReQiuYTPL/hub/main/ReQiuYTPLHub.lua', true))()
+
+
+    task.wait(30)
     for i = 1,100 do task.wait()
         local args = {
             [1] = "pets",
