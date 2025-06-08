@@ -13,7 +13,7 @@ task.spawn(function()
     script_key="AopxeFqgPLGHwDeKkeqmCNRfjIxAWcXB";
     getgenv().Config = {
         ["PetFarmAutoSwitchFullGrown"] = false,
-        ["PetFarmActive"] = true,
+        ["PetFarmActive"] = false,
         ["EggFarmActive"] = false,
         ["Blur_username"] = true,
         ["Blazing_Lion_Log"] = false,
