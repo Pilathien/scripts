@@ -36,7 +36,7 @@ task.spawn(function()
 
         game:GetService("ReplicatedStorage"):WaitForChild("API"):WaitForChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
     end
-
+    _G.savingElements["toggles"].antiafk:Set(true)
     task.wait(20)
 
     local muskratID = "camping_2025_muskrat"
