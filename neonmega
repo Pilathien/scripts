@@ -1,0 +1,234 @@
+-- Wait for the required modules to exist
+repeat task.wait() until 
+    game:GetService("ReplicatedStorage"):FindFirstChild("ClientModules") and
+    game:GetService("ReplicatedStorage").ClientModules:FindFirstChild("Core") and
+    game:GetService("ReplicatedStorage").ClientModules.Core:FindFirstChild("RouterClient") and
+    game:GetService("ReplicatedStorage").ClientModules.Core.RouterClient:FindFirstChild("RouterClient")
+
+task.spawn(function()
+    task.wait(30)
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ReQiuYTPL/hub/main/ReQiuYTPLHub.lua', true))()
+
+    -- Script key and config
+    script_key="AopxeFqgPLGHwDeKkeqmCNRfjIxAWcXB";
+    getgenv().Config = {
+        ["PetFarmAutoSwitchFullGrown"] = false,
+        ["PetFarmActive"] = true,
+        ["EggFarmActive"] = false,
+        ["Blur_username"] = true,
+        ["Blazing_Lion_Log"] = false,
+        ["DiscordId"] = "123456",
+        ["Webhook"] = "https://discord.com/api/webhooks/123456",
+    }
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/66567bfd337b57eb059b58dbe1badb89.lua"))()
+
+    task.wait(20)
+    for i = 1,100 do task.wait()
+        local args = {
+            [1] = "pets",
+            [2] = "camping_2025_muskrat",
+            [3] = {
+                ["buy_count"] = 1
+            }
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("API"):WaitForChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
+    end
+
+    task.wait(20)
+
+    local muskratID = "camping_2025_muskrat"
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local apiFolder = ReplicatedStorage:WaitForChild("API")
+
+    local equipAPI = apiFolder:WaitForChild("ToolAPI/Equip")
+    local createPetObjectAPI = game:GetService("ReplicatedStorage").API["PetObjectAPI/CreatePetObject"]
+    local grabPetObjectAPI = game:GetService("ReplicatedStorage").API["PetObjectAPI/GrabPetObject"]
+    local consumeFoodObjectAPI = game:GetService("ReplicatedStorage").API["PetAPI/ConsumeFoodObject"]
+
+    local clientData = require(ReplicatedStorage.ClientModules.Core.ClientData)
+
+    local function getPets()
+        task.wait(10)
+        return clientData.get_data()[game.Players.LocalPlayer.Name].inventory.pets or {}
+    end
+
+    local function getFoods()
+        task.wait(10)
+        return clientData.get_data()[game.Players.LocalPlayer.Name].inventory.food or {}
+    end
+
+    local function getPotionCount()
+        task.wait(10)
+        local count = 0
+        for _, food in pairs(getFoods()) do
+            if food.id == "pet_age_potion" then
+                count = count + 1
+            end
+        end
+        return count
+    end
+
+    local function countPetsByAgeAndType(minAge, maxAge, isNeon)
+        task.wait(5)
+        local count = 0
+        for _, pet in pairs(getPets()) do
+            if pet.id == muskratID and pet.properties.age and pet.properties.age >= minAge and pet.properties.age <= maxAge then
+                local neon = pet.properties.neon == true
+                if neon == isNeon then
+                    count = count + 1
+                end
+            end
+        end
+        return count
+    end
+
+    local function getPetsToAge(minAge, maxAge, isNeon, maxCount)
+        task.wait(10)
+        local petsToAge = {}
+        for _, pet in pairs(getPets()) do
+            if pet.id == muskratID and pet.properties.age and pet.properties.age >= minAge and pet.properties.age <= maxAge then
+                local neon = pet.properties.neon == true
+                if neon == isNeon then
+                    table.insert(petsToAge, pet)
+                    if maxCount and #petsToAge >= maxCount then
+                        break
+                    end
+                end
+            end
+        end
+        return petsToAge
+    end
+
+    local function ageUpPetTo6(pet)
+        while pet.properties.age < 6 do
+            if getPotionCount() <= 0 then
+                print("No potions left. Stopping.")
+                return false
+            end
+
+            equipAPI:InvokeServer(pet.unique)
+            task.wait(0.1)
+
+            local potion
+            for _, food in pairs(getFoods()) do
+                if food.id == "pet_age_potion" then
+                    potion = food
+                    break
+                end
+            end
+
+            if not potion then
+                print("No potion found. Stopping.")
+                return false
+            end
+
+            equipAPI:InvokeServer(potion.unique)
+            task.wait(0.2)
+
+            local args1 = {
+                "__Enum_PetObjectCreatorType_2",
+                { unique_id = potion.unique, pet_unique = pet.unique }
+            }
+            createPetObjectAPI:InvokeServer(unpack(args1))
+            task.wait(0.1)
+
+            local petObj = workspace:FindFirstChild("PetObjects") and workspace.PetObjects:FindFirstChild("AgePotion")
+            local petModel = workspace:FindFirstChild("Pets") and workspace.Pets:FindFirstChild("Muskrat")
+            if not petObj or not petModel then
+                print("Missing AgePotion or Muskrat model in workspace. Stopping.")
+                return false
+            end
+
+            grabPetObjectAPI:FireServer(petModel, petObj)
+            task.wait(1)
+
+            consumeFoodObjectAPI:FireServer(petObj, pet.unique)
+            task.wait(2)
+
+            -- Refresh pet data after aging
+            local refreshed = false
+            for _, p in pairs(getPets()) do
+                if p.unique == pet.unique then
+                    pet = p
+                    refreshed = true
+                    break
+                end
+            end
+            if not refreshed then
+                print("Failed to refresh pet data. Stopping.")
+                return false
+            end
+        end
+        print(string.format("Pet %s aged to 6", pet.unique))
+        return true
+    end
+
+    local function ageUpPets(pets)
+        for _, pet in ipairs(pets) do
+            local success = ageUpPetTo6(pet)
+            if not success then
+                return false
+            end
+        end
+        return true
+    end
+
+    local function triggerAutoMega()
+        print("Triggering auto mega toggle.")
+        _G.savingElements["toggles"].automega:Set(true)
+        task.wait(1)
+        _G.savingElements["toggles"].automega:Set(false)
+        task.wait(1)
+    end
+
+    local function triggerAutoNeon()
+        print("Triggering auto neon toggle.")
+        _G.savingElements["toggles"].autoneon:Set(true)
+        task.wait(3)
+        _G.savingElements["toggles"].autoneon:Set(false)
+        task.wait(1)
+    end
+
+    while true do
+        task.wait(10)  -- Small wait for data refresh
+
+        local potionCount = getPotionCount()
+        if potionCount <= 0 then
+            print("No potions left, stopping script.")
+            break
+        end
+
+        -- Prioritize growing neon pets (age 1-5)
+        local neonToGrowCount = countPetsByAgeAndType(1, 5, true)
+        if neonToGrowCount >= 4 then
+            print(string.format("Aging up to 4 neon pets (currently %d need aging)...", neonToGrowCount))
+            local petsToAge = getPetsToAge(1, 5, true, 4)
+            if not ageUpPets(petsToAge) then
+                print("Stopped while aging neon pets.")
+                break
+            end
+            triggerAutoMega()
+            continue
+        end
+
+        -- If not enough neon pets to grow, try growing normal pets (age 1-5)
+        local normalToGrowCount = countPetsByAgeAndType(1, 5, false)
+        if normalToGrowCount >= 4 then
+            print(string.format("Aging up to 4 normal pets (currently %d need aging)...", normalToGrowCount))
+            local petsToAge = getPetsToAge(1, 5, false, 4)
+            if not ageUpPets(petsToAge) then
+                print("Stopped while aging normal pets.")
+                break
+            end
+            triggerAutoNeon()
+            continue
+        end
+
+        -- If neither neon nor normal pets need aging in groups of 4, break
+        print("No sufficient pets to grow, stopping script.")
+        break
+    end
+
+    print("Script finished.")
+end)
