@@ -51,12 +51,12 @@ task.spawn(function()
     local clientData = require(ReplicatedStorage.ClientModules.Core.ClientData)
 
     local function getPets()
-        task.wait(10)
+        task.wait(2)
         return clientData.get_data()[game.Players.LocalPlayer.Name].inventory.pets or {}
     end
 
     local function getFoods()
-        task.wait(10)
+        task.wait(2)
         return clientData.get_data()[game.Players.LocalPlayer.Name].inventory.food or {}
     end
 
