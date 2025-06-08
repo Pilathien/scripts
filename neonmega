@@ -51,17 +51,17 @@ task.spawn(function()
     local clientData = require(ReplicatedStorage.ClientModules.Core.ClientData)
 
     local function getPets()
-        task.wait(2)
+        task.wait(1)
         return clientData.get_data()[game.Players.LocalPlayer.Name].inventory.pets or {}
     end
 
     local function getFoods()
-        task.wait(2)
+        task.wait(1)
         return clientData.get_data()[game.Players.LocalPlayer.Name].inventory.food or {}
     end
 
     local function getPotionCount()
-        task.wait(10)
+        task.wait(5)
         local count = 0
         for _, food in pairs(getFoods()) do
             if food.id == "pet_age_potion" then
@@ -86,7 +86,7 @@ task.spawn(function()
     end
 
     local function getPetsToAge(minAge, maxAge, isNeon, maxCount)
-        task.wait(10)
+        task.wait(5)
         local petsToAge = {}
         for _, pet in pairs(getPets()) do
             if pet.id == muskratID and pet.properties.age and pet.properties.age >= minAge and pet.properties.age <= maxAge then
@@ -146,7 +146,7 @@ task.spawn(function()
             task.wait(1)
 
             consumeFoodObjectAPI:FireServer(petObj, pet.unique)
-            task.wait(2)
+            task.wait(1)
 
             -- Refresh pet data after aging
             local refreshed = false
@@ -193,7 +193,7 @@ task.spawn(function()
     end
 
     while true do
-        task.wait(10)  -- Small wait for data refresh
+        task.wait(2)  -- Small wait for data refresh
 
         local potionCount = getPotionCount()
         if potionCount <= 0 then
