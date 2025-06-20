@@ -1,0 +1,120 @@
+repeat wait() until game:IsLoaded()
+wait(10)
+
+getgenv().Config = {
+    ["Time To Sell"] = 35, -- Seconds
+    ["Craft Event"] = 
+    {
+        ["Crafters Seed Pack"] = true,
+        ["Anti Bee Egg"] = true
+    },
+    ["Dont Spawn Bee Egg"] = true,
+    ["Dont Open Pack"] = false,
+    ["Dont Use Flower Seed Pack"] = true, -- If u Enable Crafters Seed Pack pls enable this
+    ["Seed"] = {
+        ["Corn"] = 44,
+        ["Coconut"] = 44,
+        ["Apple"] = 44,
+        ["Watermelon"] = 44,
+        ["Pepper"] = 44,
+        ["Cacao"] = 44,
+        ["Banana"] = 44,
+        ["Dragon Fruit"] = 44,
+        ["Mango"] = 44,
+        ["Cactus"] = 44,
+        ["Beanstalk"] = 44,
+        ["Grape"] = 44,
+        ["Sugar Apple"] = 44,
+        ["Ember Lilly"] = 44,
+        ["Tomato"] = 44
+    },
+    ["FPS"] = 60,
+    ["Buy Egg"] = true,
+    ["Egg"] = {
+        ["Common Egg"] = false,
+        ["Uncommon Egg"] = false,
+        ["Rare Egg"] = false,
+        ["Mythical Egg"] = true,
+        ["Legendary Egg"] = false,
+        ["Bug Egg"] = true
+    },
+    ["Honey Item"] = {
+        ["Nectarine"] = false,
+        ["Flower Seed Pack"] = true,
+        ["Honey Sprinkler"] = false,
+        ["Bee Egg"] = true,
+        ["Pollen Radar"] = false,
+        ["Nectar Staff"] = false,
+        ["Nectarshade"] = false,
+        ["Lavender"] = false,
+        ["Hive Fruit"] = false
+    },
+    ["Sprinkler"] = {
+        ["Basic Sprinkler"] = true,
+        ["Advanced Sprinkler"] = true,
+        ["Master Sprinkler"] = true,
+        ["Godly Sprinkler"] = true
+    },
+    ["Plant Candy"] = false,
+    ["PetNeedSend"] = {"Dragonfly", "Queen Bee", "Disco Bee", "Red Fox"},
+    ["Destroy Mode"] = {
+        ["Auto Destroy when have money"] = 1000, -- its will destroy all trees select when money >= select
+        ["Trees"] = {"Strawberry"}
+    },
+    ["Url"] = "https://discord.com/api/webhooks/1385360674942746825/1eIXU8I4IoJYn_uk6Ol6sVOE04vBfLCetaH4gue-r4Op6xwpVAMtAKe-RnsHw8gPCdJY", -- Webhook 
+
+    ["Boost FPS"] = false,
+    ["Black Screen"] = false,
+    ["Note"] = "Cyndral Hub",
+    ["Pet Mode"] = {
+        ["Sell Pet"] = true,
+        ["Equip Pet"] = true,
+        ["Name Pet Equip"] = {
+            ["Queen Bee"] = true,
+            ["Disco Bee"] = true,
+            ["Dragonfly"] = true,
+            ["Red Fox"] = true
+        },
+        ["Rarity"] = { -- Rarity Sell Pet
+            ["Common"] = true,
+            ["Uncommon"] = true,
+            ["Rare"] = true,
+            ["Legendary"] = false,
+            ["Divine"] = false,
+            ["Mythical"] = false
+        },
+        ["Pet Dont Delete"] = {"Queen Bee", "Disco Bee", "Dragonfly", "Red Fox"}
+    },
+    ["Webhook Mode"] = {
+        ["Enable Send Pet Weight"] = true,
+        ["Weight"] = 10 -- if Weight >= 10 they will send wh
+    },
+    ["Rejoin After X Time"] = 5000, -- Minutes
+    ["Mutation Skips"] = { -- Skip Havest
+        ["Pollinated"] = false,
+        ["Disco"] = false,
+        ["Twisted"] = false,
+        ["Wet"] = false,
+        ["Choc"] = false,
+        ["Bloodlit"] = false,
+        ["Celestial"] = false,
+        ["Moonlit"] = false,
+        ["Chilled"] = false,
+        ["Zombified"] = false,
+        ["Plasma"] = false,
+        ["Burnt"] = false,
+        ["Frozen"] = false,
+        ["Voidtouched"] = false,
+        ["HoneyGlazed"] = false,
+        ["Shocked"] = false
+    }
+}
+setfpscap(getgenv().Config["FPS"])
+
+script_key="aasrZhChgMxtlCbtjIhlMclnBpUoAbNK";
+
+repeat
+    wait()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/392bd177458276c103d5ec042d7d4e38.lua"))()
+    task.wait(10)
+until getgenv().Loaded
