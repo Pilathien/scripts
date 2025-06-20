@@ -51,10 +51,10 @@ getgenv().Config = {
         ["Hive Fruit"] = false
     },
     ["Sprinkler"] = {
-        ["Basic Sprinkler"] = true,
-        ["Advanced Sprinkler"] = true,
-        ["Master Sprinkler"] = true,
-        ["Godly Sprinkler"] = true
+        ["Basic Sprinkler"] = false,
+        ["Advanced Sprinkler"] = false,
+        ["Master Sprinkler"] = false,
+        ["Godly Sprinkler"] = false
     },
     ["Plant Candy"] = false,
     ["PetNeedSend"] = {"Dragonfly", "Queen Bee", "Disco Bee", "Red Fox"},
