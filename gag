@@ -2,15 +2,15 @@ repeat wait() until game:IsLoaded()
 wait(10)
 
 getgenv().Config = {
-    ["Time To Sell"] = 35, -- Seconds
+    ["Time To Sell"] = 90, -- Seconds
     ["Craft Event"] = 
     {
-        ["Crafters Seed Pack"] = true,
+        ["Crafters Seed Pack"] = false,
         ["Anti Bee Egg"] = true
     },
     ["Dont Spawn Bee Egg"] = true,
     ["Dont Open Pack"] = false,
-    ["Dont Use Flower Seed Pack"] = true, -- If u Enable Crafters Seed Pack pls enable this
+    ["Dont Use Flower Seed Pack"] = false, -- If u Enable Crafters Seed Pack pls enable this
     ["Seed"] = {
         ["Corn"] = 44,
         ["Coconut"] = 44,
@@ -27,16 +27,17 @@ getgenv().Config = {
         ["Sugar Apple"] = 44,
         ["Ember Lilly"] = 44,
         ["Tomato"] = 44,
-        ["Bamboo"] = 44
+        ["Bamboo"] = 44,
+        ["Strawberry] = 4
     },
-    ["FPS"] = 60,
+    ["FPS"] = 3,
     ["Buy Egg"] = true,
     ["Egg"] = {
         ["Common Egg"] = false,
         ["Uncommon Egg"] = false,
         ["Rare Egg"] = false,
         ["Mythical Egg"] = true,
-        ["Legendary Egg"] = false,
+        ["Legendary Egg"] = true,
         ["Bug Egg"] = true
     },
     ["Honey Item"] = {
@@ -57,16 +58,16 @@ getgenv().Config = {
         ["Godly Sprinkler"] = false
     },
     ["Plant Candy"] = false,
-    ["PetNeedSend"] = {"Dragonfly", "Queen Bee", "Disco Bee", "Red Fox"},
+    ["PetNeedSend"] = {"Dragonfly", "Queen Bee", "Disco Bee", "Red Fox", "Polar Bear", "Turtle", "Praying Mantis", "Red Giant Ant"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
-        ["Trees"] = {"Strawberry", "Apple", "Corn"}
+        ["Trees"] = {"Strawberry", "Apple", "Corn", "Watermelon", "Tomato"}
     },
     ["Url"] = "https://discord.com/api/webhooks/1385360674942746825/1eIXU8I4IoJYn_uk6Ol6sVOE04vBfLCetaH4gue-r4Op6xwpVAMtAKe-RnsHw8gPCdJY", -- Webhook 
 
-    ["Boost FPS"] = false,
-    ["Black Screen"] = false,
-    ["Note"] = "Cyndral Hub",
+    ["Boost FPS"] = true,
+    ["Black Screen"] = true,
+    ["Note"] = "350btc",
     ["Pet Mode"] = {
         ["Sell Pet"] = true,
         ["Equip Pet"] = true,
@@ -74,7 +75,12 @@ getgenv().Config = {
             ["Queen Bee"] = true,
             ["Disco Bee"] = true,
             ["Dragonfly"] = true,
-            ["Red Fox"] = true
+            ["Red Fox"] = true,
+            ["Dragonfly] = true,
+            ["Polar Bear"] = true,
+            ["Turtle"] = true,
+            ["Praying Mantis"] = true,
+            ["Red Giant Ant"] = true
         },
         ["Rarity"] = { -- Rarity Sell Pet
             ["Common"] = true,
@@ -84,7 +90,7 @@ getgenv().Config = {
             ["Divine"] = false,
             ["Mythical"] = false
         },
-        ["Pet Dont Delete"] = {"Queen Bee", "Disco Bee", "Dragonfly", "Red Fox"}
+        ["Pet Dont Delete"] = {"Queen Bee", "Disco Bee", "Dragonfly", "Red Fox", "Polar Bear", "Turtle", "Praying Mantis", "Red Giant Ant"}
     },
     ["Webhook Mode"] = {
         ["Enable Send Pet Weight"] = true,
