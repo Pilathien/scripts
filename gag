@@ -59,7 +59,7 @@ getgenv().Config = {
     ["Plant Candy"] = false,
     ["PetNeedSend"] = {"Dragonfly", "Queen Bee", "Disco Bee", "Red Fox"},
     ["Destroy Mode"] = {
-        ["Auto Destroy when have money"] = 1, -- its will destroy all trees select when money >= select
+        ["Auto Destroy when have money"] = 120000, -- its will destroy all trees select when money >= select
         ["Trees"] = {"Strawberry"}
     },
     ["Url"] = "https://discord.com/api/webhooks/1385360674942746825/1eIXU8I4IoJYn_uk6Ol6sVOE04vBfLCetaH4gue-r4Op6xwpVAMtAKe-RnsHw8gPCdJY", -- Webhook 
