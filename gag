@@ -2,42 +2,39 @@ repeat wait() until game:IsLoaded()
 wait(10)
 
 getgenv().Config = {
-    ["Time To Sell"] = 90, -- Seconds
-    ["Craft Event"] = 
-    {
-        ["Crafters Seed Pack"] = false,
+    ["Time To Sell"] = 35, -- Seconds
+    ["Craft Event"] = {
+        ["Crafters Seed Pack"] = true,
         ["Anti Bee Egg"] = true
     },
     ["Dont Spawn Bee Egg"] = true,
     ["Dont Open Pack"] = false,
-    ["Dont Use Flower Seed Pack"] = false, -- If u Enable Crafters Seed Pack pls enable this
+    ["Dont Use Flower Seed Pack"] = true, -- If u Enable Crafters Seed Pack pls enable this
     ["Seed"] = {
-        ["Corn"] = 44,
-        ["Coconut"] = 44,
-        ["Apple"] = 44,
-        ["Watermelon"] = 44,
-        ["Pepper"] = 44,
-        ["Cacao"] = 44,
-        ["Banana"] = 44,
-        ["Dragon Fruit"] = 44,
-        ["Mango"] = 44,
-        ["Cactus"] = 44,
-        ["Beanstalk"] = 44,
-        ["Grape"] = 44,
-        ["Sugar Apple"] = 44,
-        ["Ember Lilly"] = 44,
+        ["Strawberry] = 8,
         ["Tomato"] = 44,
-        ["Bamboo"] = 44,
-        ["Strawberry] = 4
+        ["Loquat"] = 44,
+        ["Pineapple"] = 44,
+        ["Bell Pepper"] = 44,
+        ["Green Apple"] = 44,
+        ["Feijoa"] = 44,
+        ["Avocado"] = 44,
+        ["Sugar Apple"] = 44,
+        ["Banana"] = 44,
+        ["Prickly Pear"] = 44,
+        ["Watermelon"] = 44,
+        ["Kiwi"] = 44
+
     },
     ["FPS"] = 3,
     ["Buy Egg"] = true,
     ["Egg"] = {
         ["Common Egg"] = false,
-        ["Uncommon Egg"] = false,
+        ["Uncommon Egg"] = true,
         ["Rare Egg"] = false,
         ["Mythical Egg"] = true,
         ["Legendary Egg"] = true,
+        ["Paradise Egg"] = true,
         ["Bug Egg"] = true
     },
     ["Honey Item"] = {
@@ -52,35 +49,35 @@ getgenv().Config = {
         ["Hive Fruit"] = false
     },
     ["Sprinkler"] = {
-        ["Basic Sprinkler"] = false,
-        ["Advanced Sprinkler"] = false,
-        ["Master Sprinkler"] = false,
-        ["Godly Sprinkler"] = false
+        ["Basic Sprinkler"] = true,
+        ["Advanced Sprinkler"] = true,
+        ["Master Sprinkler"] = true,
+        ["Godly Sprinkler"] = true
     },
     ["Plant Candy"] = false,
-    ["PetNeedSend"] = {"Dragonfly", "Queen Bee", "Disco Bee", "Red Fox", "Polar Bear", "Turtle", "Praying Mantis", "Red Giant Ant"},
+    ["PetNeedSend"] = {"Mimic Octopus", "Scarlet Macaw", "Disco Bee", "Butterfly", "Moth", "Capybara", "Queen Bee", "Dragonfly", "Red Fox"},
     ["Destroy Mode"] = {
         ["Auto Destroy when have money"] = 1000000, -- its will destroy all trees select when money >= select
-        ["Trees"] = {"Strawberry", "Apple", "Corn", "Watermelon", "Tomato"}
+        ["Trees"] = {"Strawberry", "Blueberry", "Corn", "Tomato", "Orange Tulip", "Carrot"}
     },
-    ["Url"] = "https://discord.com/api/webhooks/1385360674942746825/1eIXU8I4IoJYn_uk6Ol6sVOE04vBfLCetaH4gue-r4Op6xwpVAMtAKe-RnsHw8gPCdJY", -- Webhook 
+    ["Url"] = "https://discord.com/api/webhooks/1386273987868360715/wg5xi-Jp9Azr9pMZIr86_OKvsQu0PMiMhL7Ss8DaL374ycLlqh6eW4zHbztXmkMtNP7j", -- Webhook 
 
     ["Boost FPS"] = true,
     ["Black Screen"] = true,
-    ["Note"] = "350btc",
+    ["Note"] = "Cyndral Hub",
     ["Pet Mode"] = {
         ["Sell Pet"] = true,
         ["Equip Pet"] = true,
         ["Name Pet Equip"] = {
-            ["Queen Bee"] = true,
+            ["Mimic Octopus"] = true,
+            ["Scarlet Macaw"] = true,
             ["Disco Bee"] = true,
+            ["Butterfly"] = true,
+            ["Moth"] = true,
+            ["Capybara"] = true,
+            ["Queen Bee"] = true,
             ["Dragonfly"] = true,
-            ["Red Fox"] = true,
-            ["Dragonfly] = true,
-            ["Polar Bear"] = true,
-            ["Turtle"] = true,
-            ["Praying Mantis"] = true,
-            ["Red Giant Ant"] = true
+            ["Red Fox"] = true
         },
         ["Rarity"] = { -- Rarity Sell Pet
             ["Common"] = true,
@@ -90,11 +87,16 @@ getgenv().Config = {
             ["Divine"] = false,
             ["Mythical"] = false
         },
-        ["Pet Dont Delete"] = {"Queen Bee", "Disco Bee", "Dragonfly", "Red Fox", "Polar Bear", "Turtle", "Praying Mantis", "Red Giant Ant"}
+        ["Pet Dont Delete"] = {"Mimic Octopus", "Scarlet Macaw", "Disco Bee", "Butterfly", "Moth", "Capybara", "Queen Bee", "Dragonfly", "Red Fox"}
     },
     ["Webhook Mode"] = {
-        ["Enable Send Pet Weight"] = true,
+        ["Enable Send Pet Weight"] = false,
         ["Weight"] = 10 -- if Weight >= 10 they will send wh
+    },
+    ["ShoukoTracks"] = { -- U need buy shouko track for use 
+        ["Enable"] = false,
+        ["Discord ID"] = "",
+        ["Device Name"] = "ROKID_01",
     },
     ["Rejoin After X Time"] = 5000, -- Minutes
     ["Mutation Skips"] = { -- Skip Havest
